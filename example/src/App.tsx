@@ -1,23 +1,56 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, SectionList } from 'react-native';
-import { getPersonalVoices } from 'react-native-ios-personal-voice';
+import { StyleSheet, View, Text } from 'react-native';
+import {
+  requestAccessToPersonalVoices,
+  getPersonalVoices,
+  personalVoicesAuthorized,
+  personalVoicesNotAuthorized,
+  deviceDoesNotSupportPersonalVoices,
+  deviceDoesNotAllowPersonalVoices,
+} from 'react-native-ios-personal-voice';
 
 export default function App() {
+  const [status, setStatus] = useState('');
   const [voices, setVoices] = useState<string[]>([]);
 
   useEffect(() => {
-    getPersonalVoices((voices: string[]) => {
+    requestAccessToPersonalVoices((status) => {
+      setStatus(status);
+    });
+
+    getPersonalVoices((voices) => {
       setVoices(voices);
+    });
+
+    personalVoicesAuthorized((authorized) => {
+      if (authorized) {
+        console.log('authorized');
+      }
+    });
+
+    personalVoicesNotAuthorized((notAuthorized) => {
+      if (notAuthorized) {
+        console.log('not authorized');
+      }
+    });
+
+    deviceDoesNotSupportPersonalVoices((notSupported) => {
+      if (notSupported) {
+        console.log('not supported');
+      }
+    });
+
+    deviceDoesNotAllowPersonalVoices((notAllowed) => {
+      if (notAllowed) {
+        console.log('not allowed');
+      }
     });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Voices:</Text>
-      <SectionList
-        sections={[{ data: voices, key: 'voices' }]}
-        renderItem={({ item }) => <Text>{item}</Text>}
-      />
+      <Text>status: {status}</Text>
+      <Text>voices: {voices.join(', ')}</Text>
     </View>
   );
 }
@@ -25,12 +58,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
   },
 });
