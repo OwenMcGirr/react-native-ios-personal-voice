@@ -17,6 +17,7 @@ const IosPersonalVoice = NativeModules.IosPersonalVoice
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return IosPersonalVoice.multiply(a, b);
+// export the getPersonalVoices function with the callback pattern
+export function getPersonalVoices(callback: (voices: string[]) => void): void {
+  return IosPersonalVoice.getPersonalVoices(callback);
 }

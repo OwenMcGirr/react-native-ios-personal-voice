@@ -907,7 +907,7 @@ PODS:
   - React-Mapbuffer (0.74.3):
     - glog
     - React-debug
-  - react-native-ios-personal-voice (0.1.0):
+  - react-native-ios-personal-voice (0.1.1):
     - DoubleConversion
     - glog
     - RCT-Folly (= 2024.01.01.00)
@@ -1377,7 +1377,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 6b3c8c98313642140530f93c46f5a6ca4530b446
   React-logger: fa92ba4d3a5d39ac450f59be2a3cec7b099f0304
   React-Mapbuffer: 9f68550e7c6839d01411ac8896aea5c868eff63a
-  react-native-ios-personal-voice: b100fa249103a7e91defdf639c5439c69b78f528
+  react-native-ios-personal-voice: f34a8cb56ac20e24cc18bb731fc8bcf8da8e6f0e
   React-nativeconfig: fa5de9d8f4dbd5917358f8ad3ad1e08762f01dcb
   React-NativeModulesApple: a6c18ebe96428589977f43c41a2c811b27bbd9cc
   React-perflogger: 7bb9ba49435ff66b666e7966ee10082508a203e8
@@ -1408,4 +1408,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e83beb36caa1dfaa91e148c6c74f87d08ac3afea
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2

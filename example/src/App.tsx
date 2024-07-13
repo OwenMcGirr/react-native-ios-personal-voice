@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-ios-personal-voice';
+import { StyleSheet, View, Text, SectionList } from 'react-native';
+import { getPersonalVoices } from 'react-native-ios-personal-voice';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+  const [voices, setVoices] = useState<string[]>([]);
 
   useEffect(() => {
-    multiply(3, 7).then(setResult);
+    getPersonalVoices((voices: string[]) => {
+      setVoices(voices);
+    });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Voices:</Text>
+      <SectionList
+        sections={[{ data: voices, key: 'voices' }]}
+        renderItem={({ item }) => <Text>{item}</Text>}
+      />
     </View>
   );
 }
