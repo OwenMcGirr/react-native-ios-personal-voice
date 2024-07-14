@@ -17,42 +17,61 @@ const IosPersonalVoice = NativeModules.IosPersonalVoice
       }
     );
 
-// export the requestAccessToPersonalVoices function with the callback pattern
+/**
+ * Requests access to personal voices.
+ * @param callback - A callback function that takes a status string.
+ */
 export function requestAccessToPersonalVoices(
   callback: (status: string) => void
 ): void {
   return IosPersonalVoice.requestAccessToPersonalVoices(callback);
 }
 
-// export the personalVoicesAuthorized function with the callback pattern
+/**
+ * Checks if personal voices are authorized.
+ * @param callback - A callback function that takes a boolean indicating authorization.
+ */
 export function personalVoicesAuthorized(
   callback: (authorized: boolean) => void
 ): void {
   return IosPersonalVoice.personalVoicesAuthorized(callback);
 }
 
-// export the personalVoicesNotAuthorized function with the callback pattern
+/**
+ * Checks if personal voices are not authorized.
+ * @param callback - A callback function that takes a boolean indicating if not authorized.
+ */
 export function personalVoicesNotAuthorized(
   callback: (notAuthorized: boolean) => void
 ): void {
   return IosPersonalVoice.personalVoicesNotAuthorized(callback);
 }
 
-// export the deviceDoesNotSupportPersonalVoices function with the callback pattern
+/**
+ * Checks if the device does not support personal voices.
+ * @param callback - A callback function that takes a boolean indicating if not supported.
+ */
 export function deviceDoesNotSupportPersonalVoices(
   callback: (notSupported: boolean) => void
 ): void {
   return IosPersonalVoice.deviceDoesNotSupportPersonalVoices(callback);
 }
 
-// export the deviceDoesNotAllowPersonalVoices function with the callback pattern
+/**
+ * Checks if the device does not allow personal voices.
+ * @param callback - A callback function that takes a boolean indicating if not allowed.
+ */
 export function deviceDoesNotAllowPersonalVoices(
   callback: (notAllowed: boolean) => void
 ): void {
   return IosPersonalVoice.deviceDoesNotAllowPersonalVoices(callback);
 }
 
-// export the isPersonalVoice function with the callback pattern
+/**
+ * Checks if a given voice is a personal voice.
+ * @param voice - The voice to check.
+ * @param callback - A callback function that takes a boolean indicating if it is a personal voice.
+ */
 export function isPersonalVoice(
   voice: string,
   callback: (isPersonalVoice: boolean) => void
@@ -60,12 +79,21 @@ export function isPersonalVoice(
   return IosPersonalVoice.isPersonalVoice(voice, callback);
 }
 
-// export the getPersonalVoices function with the callback pattern
+/**
+ * Retrieves a list of personal voices.
+ * @param callback - A callback function that takes an array of voices.
+ */
 export function getPersonalVoices(callback: (voices: string[]) => void): void {
   return IosPersonalVoice.getPersonalVoices(callback);
 }
 
-// export the speakPersonalVoice function with the
+/**
+ * Speaks a given text using a specified personal voice.
+ * @param text - The text to speak.
+ * @param voice - The personal voice to use.
+ * @param pitch - The pitch of the speech.
+ * @param rate - The rate of the speech.
+ */
 export function speakPersonalVoice(
   text: string,
   voice: string,
