@@ -64,3 +64,13 @@ export function isPersonalVoice(
 export function getPersonalVoices(callback: (voices: string[]) => void): void {
   return IosPersonalVoice.getPersonalVoices(callback);
 }
+
+// export the speakPersonalVoice function with the
+export function speakPersonalVoice(
+  text: string,
+  voice: string,
+  pitch: number,
+  rate: number
+): void {
+  return IosPersonalVoice.speakPersonalVoice(text, voice, pitch, rate);
+}

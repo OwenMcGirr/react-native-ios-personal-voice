@@ -121,4 +121,19 @@ class IosPersonalVoice: NSObject {
       callback(["not_supported"])
     }
   }
+
+  // Method to speak a text using a personal voice with pitch and rate
+  @objc(speakPersonalVoice:voice:pitch:rate:)
+  func speakPersonalVoice(_ text: String, voice: String, pitch: Float, rate: Float) {
+    if #available(iOS 17.0, *) {
+      let voice = AVSpeechSynthesisVoice.speechVoices().first { $0.name == voice }
+      if let voice = voice {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = voice
+        utterance.pitchMultiplier = pitch
+        utterance.rate = rate
+        synthesizer.speak(utterance)
+      }
+    }
+  }
 }

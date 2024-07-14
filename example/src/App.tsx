@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import {
   requestAccessToPersonalVoices,
   getPersonalVoices,
@@ -8,6 +8,7 @@ import {
   deviceDoesNotSupportPersonalVoices,
   deviceDoesNotAllowPersonalVoices,
   isPersonalVoice,
+  speakPersonalVoice,
 } from 'react-native-ios-personal-voice';
 
 export default function App() {
@@ -60,6 +61,14 @@ export default function App() {
     <View style={styles.container}>
       <Text>status: {status}</Text>
       <Text>voices: {voices.join(', ')}</Text>
+      <Button
+        title="Speak"
+        onPress={() => {
+          if (voices[0] !== undefined) {
+            speakPersonalVoice('Hello, world!', voices[0], 1.0, 0.5);
+          }
+        }}
+      />
     </View>
   );
 }
