@@ -7,6 +7,7 @@ import {
   personalVoicesNotAuthorized,
   deviceDoesNotSupportPersonalVoices,
   deviceDoesNotAllowPersonalVoices,
+  isPersonalVoice,
 } from 'react-native-ios-personal-voice';
 
 export default function App() {
@@ -43,6 +44,14 @@ export default function App() {
     deviceDoesNotAllowPersonalVoices((notAllowed) => {
       if (notAllowed) {
         console.log('not allowed');
+      }
+    });
+
+    isPersonalVoice('Alex', (isPersonalVoice) => {
+      if (isPersonalVoice) {
+        console.log('Alex is a personal voice');
+      } else {
+        console.log('Alex is not a personal voice');
       }
     });
   }, []);

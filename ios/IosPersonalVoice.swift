@@ -85,6 +85,26 @@ class IosPersonalVoice: NSObject {
     }
   }
 
+  // Method to check if a certain voice is a personal voice
+  @objc(isPersonalVoice:callback:)
+  func isPersonalVoice(_ voice: String, callback: @escaping RCTResponseSenderBlock) {
+    if #available(iOS 17.0, *) {
+      let voice = AVSpeechSynthesisVoice.speechVoices().first { $0.name == voice }
+      if let voice = voice {
+        if voice.voiceTraits.contains(.isPersonalVoice) {
+          callback([true])
+        } else {
+          callback([false])
+        }
+      } else {
+        callback([false])
+      }
+    } else {
+      // Fallback on earlier versions
+      callback([false])
+    }
+  }
+
   // Method to get personal voices after authorization
   @objc(getPersonalVoices:)
   func getPersonalVoices(_ callback: @escaping RCTResponseSenderBlock) {

@@ -52,6 +52,14 @@ export function deviceDoesNotAllowPersonalVoices(
   return IosPersonalVoice.deviceDoesNotAllowPersonalVoices(callback);
 }
 
+// export the isPersonalVoice function with the callback pattern
+export function isPersonalVoice(
+  voice: string,
+  callback: (isPersonalVoice: boolean) => void
+): void {
+  return IosPersonalVoice.isPersonalVoice(voice, callback);
+}
+
 // export the getPersonalVoices function with the callback pattern
 export function getPersonalVoices(callback: (voices: string[]) => void): void {
   return IosPersonalVoice.getPersonalVoices(callback);

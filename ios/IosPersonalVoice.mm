@@ -12,6 +12,8 @@ RCT_EXTERN_METHOD(deviceDoesNotSupportPersonalVoices:(RCTResponseSenderBlock)cal
 
 RCT_EXTERN_METHOD(deviceDoesNotAllowPersonalVoices:(RCTResponseSenderBlock)callback)
 
+RCT_EXTERN_METHOD(isPersonalVoice:(NSString *)voice callback:(RCTResponseSenderBlock)callback)
+
 RCT_EXTERN_METHOD(getPersonalVoices:(RCTResponseSenderBlock)callback)
 
 + (BOOL)requiresMainQueueSetup
