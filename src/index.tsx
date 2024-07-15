@@ -24,7 +24,11 @@ const IosPersonalVoice = NativeModules.IosPersonalVoice
 export function requestAccessToPersonalVoices(
   callback: (status: string) => void
 ): void {
-  return IosPersonalVoice.requestAccessToPersonalVoices(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.requestAccessToPersonalVoices(callback);
+  }
+
+  return callback('Not supported on this platform');
 }
 
 /**
@@ -34,7 +38,11 @@ export function requestAccessToPersonalVoices(
 export function personalVoicesAuthorized(
   callback: (authorized: boolean) => void
 ): void {
-  return IosPersonalVoice.personalVoicesAuthorized(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.personalVoicesAuthorized(callback);
+  }
+
+  return callback(false);
 }
 
 /**
@@ -44,7 +52,11 @@ export function personalVoicesAuthorized(
 export function personalVoicesNotAuthorized(
   callback: (notAuthorized: boolean) => void
 ): void {
-  return IosPersonalVoice.personalVoicesNotAuthorized(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.personalVoicesNotAuthorized(callback);
+  }
+
+  return callback(false);
 }
 
 /**
@@ -54,7 +66,11 @@ export function personalVoicesNotAuthorized(
 export function deviceDoesNotSupportPersonalVoices(
   callback: (notSupported: boolean) => void
 ): void {
-  return IosPersonalVoice.deviceDoesNotSupportPersonalVoices(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.deviceDoesNotSupportPersonalVoices(callback);
+  }
+
+  return callback(false);
 }
 
 /**
@@ -64,7 +80,11 @@ export function deviceDoesNotSupportPersonalVoices(
 export function deviceDoesNotAllowPersonalVoices(
   callback: (notAllowed: boolean) => void
 ): void {
-  return IosPersonalVoice.deviceDoesNotAllowPersonalVoices(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.deviceDoesNotAllowPersonalVoices(callback);
+  }
+
+  return callback(false);
 }
 
 /**
@@ -76,7 +96,11 @@ export function isPersonalVoice(
   voice: string,
   callback: (isPersonalVoice: boolean) => void
 ): void {
-  return IosPersonalVoice.isPersonalVoice(voice, callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.isPersonalVoice(voice, callback);
+  }
+
+  return callback(false);
 }
 
 /**
@@ -84,7 +108,11 @@ export function isPersonalVoice(
  * @param callback - A callback function that takes an array of voices.
  */
 export function getPersonalVoices(callback: (voices: string[]) => void): void {
-  return IosPersonalVoice.getPersonalVoices(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.getPersonalVoices(callback);
+  }
+
+  return callback([]);
 }
 
 /**
@@ -100,14 +128,22 @@ export function speakPersonalVoice(
   pitch: number,
   rate: number
 ): void {
-  return IosPersonalVoice.speakPersonalVoice(text, voice, pitch, rate);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.speakPersonalVoice(text, voice, pitch, rate);
+  }
+
+  return;
 }
 
 /**
  * Stops speaking.
  */
 export function stopSpeakingPersonalVoice(): void {
-  return IosPersonalVoice.stopSpeakingPersonalVoice();
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.stopSpeakingPersonalVoice();
+  }
+
+  return;
 }
 
 /**
@@ -117,5 +153,9 @@ export function stopSpeakingPersonalVoice(): void {
 export function isSpeakingPersonalVoice(
   callback: (isSpeaking: boolean) => void
 ): void {
-  return IosPersonalVoice.isSpeakingPersonalVoice(callback);
+  if (Platform.OS === 'ios') {
+    return IosPersonalVoice.isSpeakingPersonalVoice(callback);
+  }
+
+  return callback(false);
 }
