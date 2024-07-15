@@ -1,6 +1,6 @@
 {
   "name": "react-native-ios-personal-voice",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A wrapper to access Personal Voice from React Native.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
