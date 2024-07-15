@@ -18,6 +18,10 @@ RCT_EXTERN_METHOD(getPersonalVoices:(RCTResponseSenderBlock)callback)
 
 RCT_EXTERN_METHOD(speakPersonalVoice:(NSString *)text voice:(NSString *)voice pitch:(float)pitch rate:(float)rate)
 
+RCT_EXTERN_METHOD(stopSpeakingPersonalVoice)
+
+RCT_EXTERN_METHOD(isSpeakingPersonalVoice:(RCTResponseSenderBlock)callback)
+
 + (BOOL)requiresMainQueueSetup
 {
   return NO;

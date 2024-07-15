@@ -136,4 +136,16 @@ class IosPersonalVoice: NSObject {
       }
     }
   }
+
+  // Method to stop speaking
+  @objc(stopSpeakingPersonalVoice)
+  func stopSpeakingPersonalVoice() {
+    synthesizer.stopSpeaking(at: .immediate)
+  }
+
+  // Method to check if the synthesizer is speaking
+  @objc(isSpeakingPersonalVoice:)
+  func isSpeakingPersonalVoice(_ callback: @escaping RCTResponseSenderBlock) {
+    callback([synthesizer.isSpeaking])
+  }
 }

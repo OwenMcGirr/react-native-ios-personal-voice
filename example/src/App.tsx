@@ -9,11 +9,15 @@ import {
   deviceDoesNotAllowPersonalVoices,
   isPersonalVoice,
   speakPersonalVoice,
+  stopSpeakingPersonalVoice,
+  isSpeakingPersonalVoice,
 } from 'react-native-ios-personal-voice';
 
 export default function App() {
   const [status, setStatus] = useState('');
   const [voices, setVoices] = useState<string[]>([]);
+
+  const longText = 'This is a long text. '.repeat(100);
 
   useEffect(() => {
     requestAccessToPersonalVoices((status) => {
@@ -65,8 +69,22 @@ export default function App() {
         title="Speak"
         onPress={() => {
           if (voices[0] !== undefined) {
-            speakPersonalVoice('Hello, world!', voices[0], 1.0, 0.5);
+            speakPersonalVoice(longText, voices[0], 1.0, 0.5);
+          } else {
+            console.log('No voices available');
           }
+        }}
+      />
+      <Button
+        title="Stop"
+        onPress={() => {
+          isSpeakingPersonalVoice((isSpeaking) => {
+            if (isSpeaking) {
+              stopSpeakingPersonalVoice();
+            } else {
+              console.log('Not speaking');
+            }
+          });
         }}
       />
     </View>

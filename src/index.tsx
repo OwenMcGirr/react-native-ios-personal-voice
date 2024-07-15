@@ -102,3 +102,20 @@ export function speakPersonalVoice(
 ): void {
   return IosPersonalVoice.speakPersonalVoice(text, voice, pitch, rate);
 }
+
+/**
+ * Stops speaking.
+ */
+export function stopSpeakingPersonalVoice(): void {
+  return IosPersonalVoice.stopSpeakingPersonalVoice();
+}
+
+/**
+ * Checks if the speech synthesizer is speaking.
+ * @param callback - A callback function that takes a boolean indicating if the synthesizer is speaking.
+ */
+export function isSpeakingPersonalVoice(
+  callback: (isSpeaking: boolean) => void
+): void {
+  return IosPersonalVoice.isSpeakingPersonalVoice(callback);
+}
