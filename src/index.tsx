@@ -12,7 +12,13 @@ const IosPersonalVoice = NativeModules.IosPersonalVoice
       {},
       {
         get() {
-          throw new Error(LINKING_ERROR);
+          if (Platform.OS === 'ios') {
+            throw new Error(LINKING_ERROR);
+          } else {
+            console.warn(
+              'react-native-ios-personal-voice is not supported on this platform.'
+            );
+          }
         },
       }
     );
